@@ -1,0 +1,22 @@
+--------------------------------- Version Log ----------------------------------
+Version                                 Path
+System Generator 11.3.2055              /opt/Xilinx/11.1/DSP_Tools/lin64/sysgen
+AccelDSP 11.3.2055                      /opt/Xilinx/11.1/DSP_Tools/lin64/AccelDSP
+Matlab 7.8.0.347 (R2009a)               /opt/MathWorks/R2009a/unix
+ISE 11.3.i                              /opt/Xilinx/11.1/ISE
+--------------------------------------------------------------------------------
+Summary of Errors:
+Error 0001: Overflow detected upon conversion from input to fixed-poi...
+     Block: 'untitled/Gateway In'
+--------------------------------------------------------------------------------
+
+Error 0001:
+
+Reported by:
+  'untitled/Gateway In'
+
+Details:
+This error is due to the selection of "Flag as error" for the
+overflow option for this block and the detection of an overflow
+in the conversion from input to fixed-point data type
+--------------------------------------------------------------------------------
