@@ -3,17 +3,17 @@ function blkStruct = slblocks
 %   for the Xilinx Blockset.
 
 % Copyright (c) 1998 Xilinx Inc. All Rights Reserved.
-blkStruct.Name    = ['DALI Blockset'];
+blkStruct.Name    = ['CFA Blockset'];
 blkStruct.OpenFcn = '';
 blkStruct.MaskInitialization = '';
 
-blkStruct.MaskDisplay = ['disp(''DALI Blockset'')'];
+blkStruct.MaskDisplay = ['disp(''CFA Blockset'')'];
 
 % Define the library list for the Simulink Library browser.
 % Return the name of the library model and the name for it
 %
-Browser(1).Library = 'dali_library';
-Browser(1).Name    = 'DALI Blockset';
+Browser(1).Library = 'cfa_library';
+Browser(1).Name    = 'CFA Blockset';
 % Browser(2).Library = 'testbench_lib';
 % Browser(2).Name    = 'Testbench Blockset';
 
