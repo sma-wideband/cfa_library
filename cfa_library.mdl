@@ -33,11 +33,11 @@ Library {
   Creator		  "rprimian"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "Administrator"
+  LastModifiedBy	  "Rurik A Primiani"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Dec 15 13:20:14 2010"
-  RTWModifiedTimeStamp	  214319966
-  ModelVersionFormat	  "1.%<AutoIncrement:130>"
+  LastModifiedDate	  "Sat Dec 18 19:38:59 2010"
+  RTWModifiedTimeStamp	  214601917
+  ModelVersionFormat	  "1.%<AutoIncrement:131>"
   ConfigurationManager	  "None"
   SimulationMode	  "normal"
   LinearizationMsg	  "none"
@@ -348,10 +348,18 @@ Library {
       MaskHideContents	      off
       MaskType		      "2bit_quantizer"
       MaskDescription	      "Quantizes inputs to a special 2-bit binary encoding using a dynamically set threshold value."
+      MaskPromptString	      "Relational Block Latency:"
+      MaskStyleString	      "edit"
+      MaskTunableValueString  "on"
+      MaskEnableString	      "on"
+      MaskVisibilityString    "on"
+      MaskToolTipString	      "on"
+      MaskVariables	      "relational_delay=@1;"
       MaskIconFrame	      on
       MaskIconOpaque	      on
       MaskIconRotate	      "none"
       MaskIconUnits	      "autoscale"
+      MaskValueString	      "2"
       System {
 	Name			"2bit_quantizer"
 	Location		[577, 200, 1320, 706]
@@ -400,7 +408,7 @@ Library {
 	  block_type		  "concat"
 	  block_version		  "10.1.3"
 	  sg_icon_stat		  "15,233,2,1,white,blue,0,df1e5aba,right"
-	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 15 15 0 ],[0 0 233 233 ],[0.77 0.82 0.91]);\npatch([3 1 5 1 3 7 8 9 13 10 7 5 9 5 7 10 13 9 8 7 3 ],[111 113 117 121 123 123 122 123 123 120 123 121 117 113 111 114 111 111 112 111 111 ],[0.98 0.96 0.92]);\nplot([0 15 15 0 0 ],[0 0 233 233 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,'hi');\ncolor('black');port_label('input',2,'lo');\nfprintf('','COMMENT: end icon text');\n"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 60 60 0 ],[0 0 60 60 ],[0.77 0.82 0.91]);\npatch([14 4 18 4 14 30 34 38 55 42 29 20 35 20 29 42 55 38 34 30 14 ],[6 16 30 44 54 54 50 54 54 41 54 45 30 15 6 19 6 6 10 6 6 ],[0.98 0.96 0.92]);\nplot([0 60 60 0 0 ],[0 0 60 60 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,'hi');\ncolor('black');port_label('input',2,'lo');\nfprintf('','COMMENT: end icon text');\n"
 	}
 	Block {
 	  BlockType		  Reference
@@ -428,8 +436,8 @@ Library {
 	  sggui_pos		  "20,20,400,346"
 	  block_type		  "constant"
 	  block_version		  "10.1.3"
-	  sg_icon_stat		  "20,28,1,1,white,blue,0,72d575a1,right"
-	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 20 20 0 ],[0 0 28 28 ],[0.77 0.82 0.91]);\npatch([4 1 6 1 4 9 10 11 17 13 9 6 11 6 9 13 17 11 10 9 4 ],[6 9 14 19 22 22 21 22 22 18 22 19 14 9 6 10 6 6 7 6 6 ],[0.98 0.96 0.92]);\nplot([0 20 20 0 0 ],[0 0 28 28 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('output',1,'0');\nfprintf('','COMMENT: end icon text');\n"
+	  sg_icon_stat		  "20,28,0,1,white,blue,0,72d575a1,right"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 55 55 0 ],[0 0 26 26 ],[0.77 0.82 0.91]);\npatch([20 16 22 16 20 27 29 31 38 32 26 22 28 22 26 32 38 31 29 27 20 ],[3 7 13 19 23 23 21 23 23 17 23 19 13 7 3 9 3 3 5 3 3 ],[0.98 0.96 0.92]);\nplot([0 55 55 0 0 ],[0 0 26 26 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('output',1,'0');\nfprintf('','COMMENT: end icon text');\n"
 	}
 	Block {
 	  BlockType		  Reference
@@ -455,7 +463,7 @@ Library {
 	  block_type		  "convert"
 	  block_version		  "10.1.3"
 	  sg_icon_stat		  "30,30,1,1,white,blue,0,74901e60,right"
-	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 30 30 0 ],[0 0 30 30 ],[0.77 0.82 0.91]);\npatch([7 2 9 2 7 15 17 19 27 20 14 9 15 9 14 20 27 19 17 15 7 ],[3 8 15 22 27 27 25 27 27 20 26 21 15 9 4 10 3 3 5 3 3 ],[0.98 0.96 0.92]);\nplot([0 30 30 0 0 ],[0 0 30 30 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('output',1,'cast');\nfprintf('','COMMENT: end icon text');\n"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 45 45 0 ],[0 0 30 30 ],[0.77 0.82 0.91]);\npatch([15 10 17 10 15 23 25 27 35 28 22 17 23 17 22 28 35 27 25 23 15 ],[3 8 15 22 27 27 25 27 27 20 26 21 15 9 4 10 3 3 5 3 3 ],[0.98 0.96 0.92]);\nplot([0 45 45 0 0 ],[0 0 30 30 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('output',1,'cast');\nfprintf('','COMMENT: end icon text');\n"
 	}
 	Block {
 	  BlockType		  Reference
@@ -467,17 +475,17 @@ Library {
 	  SourceType		  "Xilinx Delay Block"
 	  infoedit		  "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flop."
 	  en			  off
-	  latency		  "1"
+	  latency		  "relational_delay"
 	  dbl_ovrd		  off
 	  reg_retiming		  off
 	  xl_use_area		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
 	  has_advanced_control	  "0"
-	  sggui_pos		  "-1,-1,-1,-1"
+	  sggui_pos		  "20,20,348,255"
 	  block_type		  "delay"
 	  block_version		  "10.1.3"
-	  sg_icon_stat		  "30,30,1,1,white,blue,0,fc531c0e,right"
-	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 60 60 0 ],[0 0 56 56 ],[0.77 0.82 0.91]);\npatch([15 6 19 6 15 30 34 38 54 41 29 20 32 20 29 41 54 38 34 30 15 ],[6 15 28 41 50 50 46 50 50 37 49 40 28 16 7 19 6 6 10 6 6 ],[0.98 0.96 0.92]);\nplot([0 60 60 0 0 ],[0 0 56 56 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');disp('z^{-1}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	  sg_icon_stat		  "30,30,1,1,white,blue,0,0a7a6cf1,right"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 60 60 0 ],[0 0 56 56 ],[0.77 0.82 0.91]);\npatch([15 6 19 6 15 30 34 38 54 41 29 20 32 20 29 41 54 38 34 30 15 ],[6 15 28 41 50 50 46 50 50 37 49 40 28 16 7 19 6 6 10 6 6 ],[0.98 0.96 0.92]);\nplot([0 60 60 0 0 ],[0 0 56 56 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');disp('z^{-2}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
 	}
 	Block {
 	  BlockType		  Reference
@@ -564,7 +572,7 @@ Library {
 	  block_type		  "inv"
 	  block_version		  "10.1.3"
 	  sg_icon_stat		  "25,30,1,1,white,blue,0,1ab4a85f,right"
-	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 25 25 0 ],[0 0 30 30 ],[0.77 0.82 0.91]);\npatch([6 2 8 2 6 13 15 17 24 18 13 9 14 9 13 18 24 17 15 13 6 ],[5 9 15 21 25 25 23 25 25 19 24 20 15 10 6 11 5 5 7 5 5 ],[0.98 0.96 0.92]);\nplot([0 25 25 0 0 ],[0 0 30 30 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');disp('not');\nfprintf('','COMMENT: end icon text');\n"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 55 55 0 ],[0 0 58 58 ],[0.77 0.82 0.91]);\npatch([13 4 17 4 13 28 32 36 52 40 28 19 32 19 28 40 52 36 32 28 13 ],[7 16 29 42 51 51 47 51 51 39 51 42 29 16 7 19 7 7 11 7 7 ],[0.98 0.96 0.92]);\nplot([0 55 55 0 0 ],[0 0 58 58 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');disp('not');\nfprintf('','COMMENT: end icon text');\n"
 	}
 	Block {
 	  BlockType		  Reference
@@ -618,7 +626,7 @@ Library {
 	  block_type		  "mux"
 	  block_version		  "10.1.3"
 	  sg_icon_stat		  "25,154,3,1,white,blue,3,613f58e1,right"
-	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 25 25 0 ],[0 22 132 154 ],[0.77 0.82 0.91]);\npatch([6 2 8 2 6 13 15 17 24 18 13 9 14 9 13 18 24 17 15 13 6 ],[67 71 77 83 87 87 85 87 87 81 86 82 77 72 68 73 67 67 69 67 67 ],[0.98 0.96 0.92]);\nplot([0 25 25 0 0 ],[0 22 132 154 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,'sel');\ncolor('black');port_label('input',2,'d0');\ncolor('black');port_label('input',3,'d1');\ncolor('black');disp('\\bf{}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 45 45 0 ],[0 14.8571 89.1429 104 ],[0.77 0.82 0.91]);\npatch([10 3 14 3 10 22 25 28 41 31 21 14 25 14 21 31 41 28 25 22 10 ],[34 41 52 63 70 70 67 70 70 60 70 63 52 41 34 44 34 34 37 34 34 ],[0.98 0.96 0.92]);\nplot([0 45 45 0 0 ],[0 14.8571 89.1429 104 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,'sel');\ncolor('black');port_label('input',2,'d0');\ncolor('black');port_label('input',3,'d1');\ncolor('black');disp('\\bf{}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
 	}
 	Block {
 	  BlockType		  Reference
@@ -676,16 +684,16 @@ Library {
 	  SourceType		  "Xilinx Arithmetic Relational Operator Block"
 	  mode			  "a>=b"
 	  en			  off
-	  latency		  "1"
+	  latency		  "relational_delay"
 	  dbl_ovrd		  off
 	  xl_use_area		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
 	  has_advanced_control	  "0"
-	  sggui_pos		  "-1,-1,-1,-1"
+	  sggui_pos		  "20,20,348,193"
 	  block_type		  "relational"
 	  block_version		  "10.1.3"
-	  sg_icon_stat		  "30,82,2,1,white,blue,0,48ab8ed9,right"
-	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 30 30 0 ],[0 0 82 82 ],[0.77 0.82 0.91]);\npatch([7 2 9 2 7 15 17 19 27 20 14 9 15 9 14 20 27 19 17 15 7 ],[29 34 41 48 53 53 51 53 53 46 52 47 41 35 30 36 29 29 31 29 29 ],[0.98 0.96 0.92]);\nplot([0 30 30 0 0 ],[0 0 82 82 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,'a');\ncolor('black');port_label('input',2,'b');\ncolor('black');disp('\\newline\\bf{a>=b}\\newlinez^{-1}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	  sg_icon_stat		  "30,82,1,1,white,blue,0,86d8df86,right"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 55 55 0 ],[0 0 56 56 ],[0.77 0.82 0.91]);\npatch([13 4 17 4 13 28 32 36 52 40 28 19 32 19 28 40 52 36 32 28 13 ],[6 15 28 41 50 50 46 50 50 38 50 41 28 15 6 18 6 6 10 6 6 ],[0.98 0.96 0.92]);\nplot([0 55 55 0 0 ],[0 0 56 56 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,'a');\ncolor('black');port_label('input',2,'b');\ncolor('black');disp('\\newline\\bf{a>=b}\\newlinez^{-2}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
 	}
 	Block {
 	  BlockType		  Reference
@@ -697,7 +705,7 @@ Library {
 	  SourceType		  "Xilinx Arithmetic Relational Operator Block"
 	  mode			  "a=b"
 	  en			  off
-	  latency		  "1"
+	  latency		  "relational_delay"
 	  dbl_ovrd		  off
 	  xl_use_area		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
@@ -705,8 +713,8 @@ Library {
 	  sggui_pos		  "20,20,348,193"
 	  block_type		  "relational"
 	  block_version		  "10.1.3"
-	  sg_icon_stat		  "30,84,1,1,white,blue,0,1cf02e61,right"
-	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 30 30 0 ],[0 0 84 84 ],[0.77 0.82 0.91]);\npatch([7 2 9 2 7 15 17 19 27 20 14 9 15 9 14 20 27 19 17 15 7 ],[30 35 42 49 54 54 52 54 54 47 53 48 42 36 31 37 30 30 32 30 30 ],[0.98 0.96 0.92]);\nplot([0 30 30 0 0 ],[0 0 84 84 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,'a');\ncolor('black');port_label('input',2,'b');\ncolor('black');disp('\\newline\\bf{a=b}\\newlinez^{-1}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	  sg_icon_stat		  "30,84,1,1,white,blue,0,d9781c70,right"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 55 55 0 ],[0 0 56 56 ],[0.77 0.82 0.91]);\npatch([13 4 17 4 13 28 32 36 52 40 28 19 32 19 28 40 52 36 32 28 13 ],[6 15 28 41 50 50 46 50 50 38 50 41 28 15 6 18 6 6 10 6 6 ],[0.98 0.96 0.92]);\nplot([0 55 55 0 0 ],[0 0 56 56 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,'a');\ncolor('black');port_label('input',2,'b');\ncolor('black');disp('\\newline\\bf{a=b}\\newlinez^{-2}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
 	}
 	Block {
 	  BlockType		  Reference
@@ -764,7 +772,7 @@ Library {
 	  block_type		  "counter"
 	  block_version		  "10.1.3"
 	  sg_icon_stat		  "40,32,1,1,white,blue,0,1018756c,right"
-	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 40 40 0 ],[0 0 32 32 ],[0.77 0.82 0.91]);\npatch([11 6 13 6 11 19 21 23 32 25 18 13 20 13 18 25 32 23 21 19 11 ],[3 8 15 22 27 27 25 27 27 20 27 22 15 8 3 10 3 3 5 3 3 ],[0.98 0.96 0.92]);\nplot([0 40 40 0 0 ],[0 0 32 32 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,'en');\ncolor('black');port_label('output',1,'out');\nfprintf('','COMMENT: end icon text');\n"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 60 60 0 ],[0 0 60 60 ],[0.77 0.82 0.91]);\npatch([14 4 18 4 14 30 34 38 55 42 29 20 35 20 29 42 55 38 34 30 14 ],[6 16 30 44 54 54 50 54 54 41 54 45 30 15 6 19 6 6 10 6 6 ],[0.98 0.96 0.92]);\nplot([0 60 60 0 0 ],[0 0 60 60 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,'en');\ncolor('black');port_label('output',1,'out');\nfprintf('','COMMENT: end icon text');\n"
 	}
 	Block {
 	  BlockType		  Outport

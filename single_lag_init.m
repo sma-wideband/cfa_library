@@ -108,7 +108,8 @@ end
 for i=0:2^n_inputs-1,
     % Draw the multipliers
     if strcmp(use_2bit, 'off'),
-        reuse_block(blk, ['mult', num2str(i)], 'xbsIndex_r4/Mult',...
+        mult_name = 'mult_xl';
+        reuse_block(blk, [mult_name, num2str(i)], 'xbsIndex_r4/Mult',...
             'Position', [mult_x0 mult_y0+i*(48+mult_ysep),...
             mult_x0+48 mult_y0+48+i*(48+mult_ysep)],...
             'Precision', 'Full',...
@@ -116,12 +117,13 @@ for i=0:2^n_inputs-1,
             'Use_behavioral_HDL', mult_use_behavioral,...
             'Use_embedded', mult_use_embedded);
     else
-        reuse_block(blk, ['mult', num2str(i)], 'cfa_library/2bit_mult',...
+        mult_name = 'mult_sp';
+        reuse_block(blk, [mult_name, num2str(i)], 'cfa_library/2bit_mult',...
             'Position', [mult_x0 mult_y0+i*(48+mult_ysep),...
             mult_x0+48 mult_y0+48+i*(48+mult_ysep)]);
     end
-    add_line(blk, ['i', num2str(i), '/1'], ['mult', num2str(i), '/1']);
-    add_line(blk, ['q', num2str(i), '/1'], ['mult', num2str(i), '/2']);
+    add_line(blk, ['i', num2str(i), '/1'], [mult_name, num2str(i), '/1']);
+    add_line(blk, ['q', num2str(i), '/1'], [mult_name, num2str(i), '/2']);
 end
 
 add_x0 = mult_x0+260;
@@ -141,8 +143,8 @@ for i=n_inputs-1:-1:0,
             'Use_behavioral_HDL', add_use_behavioral,...
             'HW_selection', add_spec);
         if i==n_inputs-1,
-            add_line(blk, ['mult', num2str(2*j-2), '/1'], [add_name, '/1']);
-            add_line(blk, ['mult', num2str(2*j-1), '/1'], [add_name, '/2']);
+            add_line(blk, [mult_name, num2str(2*j-2), '/1'], [add_name, '/1']);
+            add_line(blk, [mult_name, num2str(2*j-1), '/1'], [add_name, '/2']);
         else
             add_line(blk,...
                 ['add', num2str(2^(i+2)-2*j), '/1'], [add_name, '/1']);
