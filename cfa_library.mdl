@@ -33,11 +33,11 @@ Library {
   Creator		  "rprimian"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "Rurik A Primiani"
+  LastModifiedBy	  "Administrator"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Dec 18 19:38:59 2010"
-  RTWModifiedTimeStamp	  214601917
-  ModelVersionFormat	  "1.%<AutoIncrement:131>"
+  LastModifiedDate	  "Mon Dec 20 20:11:20 2010"
+  RTWModifiedTimeStamp	  214776679
+  ModelVersionFormat	  "1.%<AutoIncrement:133>"
   ConfigurationManager	  "None"
   SimulationMode	  "normal"
   LinearizationMsg	  "none"
@@ -180,7 +180,7 @@ Library {
   }
   System {
     Name		    "cfa_library"
-    Location		    [214, 70, 1430, 852]
+    Location		    [214, 74, 1430, 856]
     Open		    off
     ModelBrowserVisibility  on
     ModelBrowserWidth	    212
@@ -348,18 +348,21 @@ Library {
       MaskHideContents	      off
       MaskType		      "2bit_quantizer"
       MaskDescription	      "Quantizes inputs to a special 2-bit binary encoding using a dynamically set threshold value."
-      MaskPromptString	      "Relational Block Latency:"
-      MaskStyleString	      "edit"
-      MaskTunableValueString  "on"
-      MaskEnableString	      "on"
-      MaskVisibilityString    "on"
-      MaskToolTipString	      "on"
-      MaskVariables	      "relational_delay=@1;"
+      MaskPromptString	      "Relational Block Latency:|Mux Latency:"
+      MaskStyleString	      "edit,edit"
+      MaskTunableValueString  "on,on"
+      MaskCallbackString      "|"
+      MaskEnableString	      "on,on"
+      MaskVisibilityString    "on,on"
+      MaskToolTipString	      "on,on"
+      MaskVarAliasString      ","
+      MaskVariables	      "relational_delay=@1;mux_delay=@2;"
       MaskIconFrame	      on
       MaskIconOpaque	      on
       MaskIconRotate	      "none"
       MaskIconUnits	      "autoscale"
-      MaskValueString	      "2"
+      MaskValueString	      "2|1"
+      MaskTabNameString	      ","
       System {
 	Name			"2bit_quantizer"
 	Location		[577, 200, 1320, 706]
@@ -386,7 +389,7 @@ Library {
 	Block {
 	  BlockType		  Inport
 	  Name			  "thresh"
-	  Position		  [20, 338, 50, 352]
+	  Position		  [20, 373, 50, 387]
 	  Port			  "2"
 	  IconDisplay		  "Port number"
 	  OutDataType		  "sfix(16)"
@@ -396,7 +399,7 @@ Library {
 	  BlockType		  Reference
 	  Name			  "Concat"
 	  Ports			  [2, 1]
-	  Position		  [680, 151, 695, 384]
+	  Position		  [680, 186, 695, 419]
 	  ShowName		  off
 	  SourceBlock		  "xbsIndex_r4/Concat"
 	  SourceType		  "Xilinx Bus Concatenator Block"
@@ -414,7 +417,7 @@ Library {
 	  BlockType		  Reference
 	  Name			  "Constant"
 	  Ports			  [0, 1]
-	  Position		  [335, 166, 355, 194]
+	  Position		  [335, 201, 355, 229]
 	  ShowName		  off
 	  SourceBlock		  "xbsIndex_r4/Constant"
 	  SourceType		  "Xilinx Constant Block Block"
@@ -443,7 +446,7 @@ Library {
 	  BlockType		  Reference
 	  Name			  "Convert"
 	  Ports			  [1, 1]
-	  Position		  [495, 310, 525, 340]
+	  Position		  [495, 345, 525, 375]
 	  ShowName		  off
 	  SourceBlock		  "xbsIndex_r4/Convert"
 	  SourceType		  "Xilinx Type Converter Block"
@@ -491,7 +494,7 @@ Library {
 	  BlockType		  Reference
 	  Name			  "Delay1"
 	  Ports			  [1, 1]
-	  Position		  [440, 145, 470, 175]
+	  Position		  [440, 180, 470, 210]
 	  ShowName		  off
 	  SourceBlock		  "xbsIndex_r4/Delay"
 	  SourceType		  "Xilinx Delay Block"
@@ -535,7 +538,7 @@ Library {
 	  BlockType		  Reference
 	  Name			  "Delay3"
 	  Ports			  [1, 1]
-	  Position		  [440, 310, 470, 340]
+	  Position		  [440, 345, 470, 375]
 	  ShowName		  off
 	  SourceBlock		  "xbsIndex_r4/Delay"
 	  SourceType		  "Xilinx Delay Block"
@@ -555,9 +558,53 @@ Library {
 	}
 	Block {
 	  BlockType		  Reference
+	  Name			  "Delay4"
+	  Ports			  [1, 1]
+	  Position		  [240, 75, 270, 105]
+	  ShowName		  off
+	  SourceBlock		  "xbsIndex_r4/Delay"
+	  SourceType		  "Xilinx Delay Block"
+	  infoedit		  "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flop."
+	  en			  off
+	  latency		  "mux_delay"
+	  dbl_ovrd		  off
+	  reg_retiming		  off
+	  xl_use_area		  off
+	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "20,20,348,255"
+	  block_type		  "delay"
+	  block_version		  "10.1.3"
+	  sg_icon_stat		  "30,30,1,1,white,blue,0,fc531c0e,right"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 30 30 0 ],[0 0 30 30 ],[0.77 0.82 0.91]);\npatch([7 2 9 2 7 15 17 19 27 20 14 9 15 9 14 20 27 19 17 15 7 ],[3 8 15 22 27 27 25 27 27 20 26 21 15 9 4 10 3 3 5 3 3 ],[0.98 0.96 0.92]);\nplot([0 30 30 0 0 ],[0 0 30 30 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');disp('z^{-1}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Delay5"
+	  Ports			  [1, 1]
+	  Position		  [240, 365, 270, 395]
+	  ShowName		  off
+	  SourceBlock		  "xbsIndex_r4/Delay"
+	  SourceType		  "Xilinx Delay Block"
+	  infoedit		  "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flop."
+	  en			  off
+	  latency		  "mux_delay"
+	  dbl_ovrd		  off
+	  reg_retiming		  off
+	  xl_use_area		  off
+	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "20,20,348,255"
+	  block_type		  "delay"
+	  block_version		  "10.1.3"
+	  sg_icon_stat		  "30,30,1,1,white,blue,0,fc531c0e,right"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 30 30 0 ],[0 0 30 30 ],[0.77 0.82 0.91]);\npatch([7 2 9 2 7 15 17 19 27 20 14 9 15 9 14 20 27 19 17 15 7 ],[3 8 15 22 27 27 25 27 27 20 26 21 15 9 4 10 3 3 5 3 3 ],[0.98 0.96 0.92]);\nplot([0 30 30 0 0 ],[0 0 30 30 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');disp('z^{-1}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
 	  Name			  "Inverter"
 	  Ports			  [1, 1]
-	  Position		  [515, 145, 540, 175]
+	  Position		  [515, 180, 540, 210]
 	  ShowName		  off
 	  SourceBlock		  "xbsIndex_r4/Inverter"
 	  SourceType		  "Xilinx Inverter Block"
@@ -578,13 +625,13 @@ Library {
 	  BlockType		  Reference
 	  Name			  "Mux"
 	  Ports			  [3, 1]
-	  Position		  [240, 100, 265, 180]
+	  Position		  [240, 135, 265, 215]
 	  ShowName		  off
 	  SourceBlock		  "xbsIndex_r4/Mux"
 	  SourceType		  "Xilinx Bus Multiplexer Block"
 	  inputs		  "2"
 	  en			  off
-	  latency		  "0"
+	  latency		  "mux_delay"
 	  precision		  "Full"
 	  arith_type		  "Signed  (2's comp)"
 	  n_bits		  "8"
@@ -595,17 +642,17 @@ Library {
 	  xl_use_area		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
 	  has_advanced_control	  "0"
-	  sggui_pos		  "-1,-1,-1,-1"
+	  sggui_pos		  "162,259,348,303"
 	  block_type		  "mux"
 	  block_version		  "10.1.3"
-	  sg_icon_stat		  "25,80,3,1,white,blue,3,613f58e1,right"
-	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 45 45 0 ],[0 14.8571 89.1429 104 ],[0.77 0.82 0.91]);\npatch([10 3 14 3 10 22 25 28 41 31 21 14 25 14 21 31 41 28 25 22 10 ],[34 41 52 63 70 70 67 70 70 60 70 63 52 41 34 44 34 34 37 34 34 ],[0.98 0.96 0.92]);\nplot([0 45 45 0 0 ],[0 14.8571 89.1429 104 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,'sel');\ncolor('black');port_label('input',2,'d0');\ncolor('black');port_label('input',3,'d1');\ncolor('black');disp('\\bf{}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	  sg_icon_stat		  "25,80,1,1,white,blue,3,03f9c9b9,right"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 45 45 0 ],[0 14.8571 89.1429 104 ],[0.77 0.82 0.91]);\npatch([10 3 14 3 10 22 25 28 41 31 21 14 25 14 21 31 41 28 25 22 10 ],[34 41 52 63 70 70 67 70 70 60 70 63 52 41 34 44 34 34 37 34 34 ],[0.98 0.96 0.92]);\nplot([0 45 45 0 0 ],[0 14.8571 89.1429 104 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,'sel');\ncolor('black');port_label('input',2,'d0');\ncolor('black');port_label('input',3,'d1');\ncolor('black');disp('\\bf{  z^{-1}}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
 	}
 	Block {
 	  BlockType		  Reference
 	  Name			  "Mux1"
 	  Ports			  [3, 1]
-	  Position		  [560, 133, 585, 287]
+	  Position		  [560, 168, 585, 322]
 	  ShowName		  off
 	  SourceBlock		  "xbsIndex_r4/Mux"
 	  SourceType		  "Xilinx Bus Multiplexer Block"
@@ -632,7 +679,7 @@ Library {
 	  BlockType		  Reference
 	  Name			  "Negate"
 	  Ports			  [1, 1]
-	  Position		  [120, 152, 150, 178]
+	  Position		  [120, 187, 150, 213]
 	  ShowName		  off
 	  SourceBlock		  "xbsIndex_r4/Negate"
 	  SourceType		  "Xilinx Negate Block Block"
@@ -678,7 +725,7 @@ Library {
 	  BlockType		  Reference
 	  Name			  "Relational"
 	  Ports			  [2, 1]
-	  Position		  [370, 284, 400, 366]
+	  Position		  [370, 319, 400, 401]
 	  ShowName		  off
 	  SourceBlock		  "xbsIndex_r4/Relational"
 	  SourceType		  "Xilinx Arithmetic Relational Operator Block"
@@ -692,14 +739,14 @@ Library {
 	  sggui_pos		  "20,20,348,193"
 	  block_type		  "relational"
 	  block_version		  "10.1.3"
-	  sg_icon_stat		  "30,82,1,1,white,blue,0,86d8df86,right"
+	  sg_icon_stat		  "30,82,2,1,white,blue,0,86d8df86,right"
 	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 55 55 0 ],[0 0 56 56 ],[0.77 0.82 0.91]);\npatch([13 4 17 4 13 28 32 36 52 40 28 19 32 19 28 40 52 36 32 28 13 ],[6 15 28 41 50 50 46 50 50 38 50 41 28 15 6 18 6 6 10 6 6 ],[0.98 0.96 0.92]);\nplot([0 55 55 0 0 ],[0 0 56 56 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,'a');\ncolor('black');port_label('input',2,'b');\ncolor('black');disp('\\newline\\bf{a>=b}\\newlinez^{-2}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
 	}
 	Block {
 	  BlockType		  Reference
 	  Name			  "Relational1"
 	  Ports			  [2, 1]
-	  Position		  [370, 118, 400, 202]
+	  Position		  [370, 153, 400, 237]
 	  ShowName		  off
 	  SourceBlock		  "xbsIndex_r4/Relational"
 	  SourceType		  "Xilinx Arithmetic Relational Operator Block"
@@ -713,7 +760,7 @@ Library {
 	  sggui_pos		  "20,20,348,193"
 	  block_type		  "relational"
 	  block_version		  "10.1.3"
-	  sg_icon_stat		  "30,84,1,1,white,blue,0,d9781c70,right"
+	  sg_icon_stat		  "30,84,2,1,white,blue,0,d9781c70,right"
 	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 55 55 0 ],[0 0 56 56 ],[0.77 0.82 0.91]);\npatch([13 4 17 4 13 28 32 36 52 40 28 19 32 19 28 40 52 36 32 28 13 ],[6 15 28 41 50 50 46 50 50 38 50 41 28 15 6 18 6 6 10 6 6 ],[0.98 0.96 0.92]);\nplot([0 55 55 0 0 ],[0 0 56 56 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,'a');\ncolor('black');port_label('input',2,'b');\ncolor('black');disp('\\newline\\bf{a=b}\\newlinez^{-2}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
 	}
 	Block {
@@ -744,7 +791,7 @@ Library {
 	  BlockType		  Reference
 	  Name			  "zero_one"
 	  Ports			  [1, 1]
-	  Position		  [435, 194, 475, 226]
+	  Position		  [435, 229, 475, 261]
 	  SourceBlock		  "xbsIndex_r4/Counter"
 	  SourceType		  "Xilinx Counter Block"
 	  infoedit		  "Hardware notes: Free running counters are the least expensive in hardware.  A count limited counter is implemented by combining a counter with a comparator."
@@ -777,7 +824,7 @@ Library {
 	Block {
 	  BlockType		  Outport
 	  Name			  "q"
-	  Position		  [720, 263, 750, 277]
+	  Position		  [720, 298, 750, 312]
 	  IconDisplay		  "Port number"
 	  OutDataType		  "sfix(16)"
 	  OutScaling		  "2^0"
@@ -805,20 +852,20 @@ Library {
 	Line {
 	  SrcBlock		  "thresh"
 	  SrcPort		  1
-	  DstBlock		  "Relational"
-	  DstPort		  2
+	  DstBlock		  "Delay5"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Slice"
 	  SrcPort		  1
 	  Points		  [5, 0]
 	  Branch {
-	    DstBlock		    "Delay"
+	    Points		    [0, 60]
+	    DstBlock		    "Mux"
 	    DstPort		    1
 	  }
 	  Branch {
-	    Points		    [0, 25]
-	    DstBlock		    "Mux"
+	    DstBlock		    "Delay4"
 	    DstPort		    1
 	  }
 	}
@@ -837,7 +884,7 @@ Library {
 	    DstPort		    1
 	  }
 	  Branch {
-	    Points		    [0, 50]
+	    Points		    [0, 85]
 	    Branch {
 	      Points		      [0, 25]
 	      DstBlock		      "Negate"
@@ -908,7 +955,7 @@ Library {
 	Line {
 	  SrcBlock		  "Delay2"
 	  SrcPort		  1
-	  Points		  [15, 0; 0, 170]
+	  Points		  [15, 0; 0, 205]
 	  DstBlock		  "Mux1"
 	  DstPort		  3
 	}
@@ -929,6 +976,18 @@ Library {
 	  SrcPort		  1
 	  DstBlock		  "Mux1"
 	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Delay4"
+	  SrcPort		  1
+	  DstBlock		  "Delay"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Delay5"
+	  SrcPort		  1
+	  DstBlock		  "Relational"
+	  DstPort		  2
 	}
       }
     }
