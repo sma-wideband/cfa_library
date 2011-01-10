@@ -178,31 +178,46 @@ end
 
 x1 = x0+128*(2^total_lags+2);
 y1 = y0+(3+2^n_inputs)*port_ysep;
-if strcmp(use_2bit, 'on'),
+
+% Calculate the sample width and binary point
+if strcmp(use_2bit, 'on') && strcmp(complex_in, 'off'),
     lagged_bit_width = n_inputs+5;
+    lagged_bin_pt = 0;
+elseif strcmp(use_2bit, 'on') && strcmp(complex_in, 'on'),
+    lagged_bit_width = n_inputs+6;
     lagged_bin_pt = 0;
 else
     lagged_bit_width = n_inputs+input_bit_width*2;
     lagged_bin_pt = input_bin_pt*2;
 end
+
+% ... and the number of requested outputs
 if strcmp(single_output, 'on'),
     n_outputs = 0;
 else
     n_outputs = n_inputs+1;
 end
+
+% ... and how to uncram the lags
+if strcmp(complex_in, 'on'),
+    uncram_slice_width = 2*lagged_bit_width*2^n_outputs;
+else
+    uncram_slice_width = lagged_bit_width*2^n_outputs;
+end
+
 % Finally process/accumulate each set of lags such that the block will
 % stream similar to the CASPER streaming FFT. This requires the lags to 
 % be accumulated total_lags-n_inputs samples at a time. 
 reuse_block(blk, 'lag_slice', 'xbsIndex_r4/Slice',...
     'Position', [x1 y1 x1+30 y1+16],...
-    'Nbits', num2str(lagged_bit_width*2^total_lags),...
+    'Nbits', num2str(uncram_slice_width*2^total_lags),...
     'Mode', 'Lower Bit Location + Width',...
     'Base0', 'LSB of Input');
 add_line(blk, [name, '/', num2str(2^(n_inputs+1)+1)], 'lag_slice/1');
 reuse_block(blk, 'uncram', 'gavrt_library/uncram',...
     'Position', [x1+90 y1 x1+120 y1+60],...
     'Num_Slice', num2str(2^(total_lags-n_outputs)),...
-    'Slice_Width', num2str(lagged_bit_width*2^(n_outputs)),...
+    'Slice_Width', num2str(uncram_slice_width),...
     'Bin_Pt', '0',...
     'Arith_Type', '0');
 add_line(blk, 'lag_slice/1', 'uncram/1');
