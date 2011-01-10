@@ -17,6 +17,7 @@ defaults = {...
     'vector_len', 5,...
     'input_bit_width', 18,...
     'input_bin_pt', 14,...
+    'complex_in', 'off',...
     'samples_out', 3,...
     'output_bit_width', 22,...
     'output_bin_pt', 14,...
@@ -33,6 +34,7 @@ munge_block(blk, varargin{:});
 vector_len = get_var('vector_len', 'defaults', defaults, varargin{:});
 input_bit_width = get_var('input_bit_width', 'defaults', defaults, varargin{:});
 input_bin_pt = get_var('input_bin_pt', 'defaults', defaults, varargin{:});
+complex_in = get_var('complex_in', 'defaults', defaults, varargin{:});
 samples_out = get_var('samples_out', 'defaults', defaults, varargin{:});
 output_bit_width = get_var('output_bit_width', 'defaults', defaults, varargin{:});
 output_bin_pt = get_var('input_bin_pt', 'defaults', defaults, varargin{:});
@@ -41,6 +43,11 @@ overflow = get_var('overflow', 'defaults', defaults, varargin{:});
 specify_add = get_var('specify_add', 'defaults', defaults, varargin{:});
 add_spec = get_var('add_spec', 'defaults', defaults, varargin{:});
 add_delay= get_var('add_delay', 'defaults', defaults, varargin{:});
+if strcmp(complex_in, 'on'),
+    complexity = 'complex';
+else
+    complexity = 'real';
+end
 
 % Remove all lines, will be redrawn later
 delete_lines(blk);
@@ -152,7 +159,7 @@ end
 
 % Clean blocks and finish up.
 clean_blocks(blk);
-fmtstr = sprintf('%d=>%d samples\n%s',...
-    2^vector_len, 2^samples_out, mode);
+fmtstr = sprintf('%d=>%d %s samples\n%s',...
+    2^vector_len, 2^samples_out, complexity, mode);
 set_param(blk, 'AttributesFormatString', fmtstr);
 save_state(blk, 'defaults', defaults, varargin{:});
