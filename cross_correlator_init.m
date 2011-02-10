@@ -253,7 +253,8 @@ sync_delay = start_delay + ...
     overall_delay * 2^(total_lags-1) + ... % First (negative) half of lags
     (overall_delay+1) * 2^(total_lags-1) + ... % Positive lags
     mult_sync_delay + ... % Latency of the multipliers
-    add_delay * n_inputs; % Adder tree delay
+    add_delay * n_inputs ... % Adder tree delay
+    - 8; % Put lag0 in middle of 16-sample accumulation
 reuse_block(blk, 'sync', 'built-in/inport',...
     'Position', [x1-2*width y1-4*height x1-width y1-3*height], 'Port', '1');
 reuse_block(blk, 'lag_delay',...
